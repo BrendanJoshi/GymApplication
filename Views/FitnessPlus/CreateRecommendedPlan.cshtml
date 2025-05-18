@@ -1,0 +1,102 @@
+﻿@model RecommendDietAndExercisePlanViewModel
+@inject IUtility _Utility 
+
+<div class="row page-titles mx-0">
+    <div class="col-sm-12 p-md-0">
+        <div class="welcome-text">
+            <h4>Hi, welcome back!</h4>
+            <span class="ml-1">Recommend Diet to User</span>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form asp-action="CreateRecommendedPlan" method="post" enctype="multipart/form-data">
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label asp-for="PersonalInformationId" class="font-weight-bold">Personal Information</label>
+                    <select asp-for="PersonalInformationId" asp-items="await _Utility.GetPersonalInformation()" class="form-control select2-dropdown">
+                    <option value="">--Select--</option>
+                </select>
+                <span asp-validation-for="PersonalInformationId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-8">
+                </div>
+            <div class="form-group col-md-3">
+                <label asp-for="DietName" class="font-weight-bold">DietName</label>
+                <input type="text" asp-for="DietName" class="form-control" />
+                <span asp-validation-for="DietName" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Duration" class="font-weight-bold">Duration</label>
+                    <select asp-for="Duration" asp-items="await _Utility.GetDuration()" class="form-control">
+                        <option value="">--Select--</option>
+                    </select>
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group col-md-6">
+                <label asp-for="DietPlan" class="font-weight-bold">DietPlan</label>
+                    <textarea id="DietPlan" name="DietPlan">@Model.DietPlan</textarea>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="ExerciseName" class="font-weight-bold">ExerciseName</label>
+                <input type="text" asp-for="ExerciseName" class="form-control" />
+                <span asp-validation-for="ExerciseName" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="ExeDuration" class="font-weight-bold">Duration</label>
+                    <select asp-for="ExeDuration" asp-items="await _Utility.GetDuration()" class="form-control">
+                        <option value="">--Select--</option>
+                    </select>
+                <span asp-validation-for="ExeDuration" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group col-md-6">
+                    <label asp-for="ExercisePlan" class="font-weight-bold">ExercisePlan</label>
+                    <textarea id="ExercisePlan" name="ExercisePlan">@Model.ExercisePlan</textarea>
+                <span asp-validation-for="ExercisePlan" class="text-danger"></span>
+            </div>
+           
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success btn-sm text-white">
+                    <i class="fa fa-save"></i> Save
+                </button>
+                <a asp-action="RecommendedPlan" class="btn btn-sm text-white" style="background-color:#424f63;">
+                    <i class="fa fa-arrow-left" aria-hidden="true"> Back </i>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script>
+         
+        $(document).ready(function () {
+            CKEDITOR.replace('DietPlan', {
+                versionCheck: false
+            });
+        });
+        $(document).ready(function () {
+            CKEDITOR.replace('ExercisePlan', {
+                versionCheck: false
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.select2-dropdown').select2();
+        });
+    </script>
+}
+
+  

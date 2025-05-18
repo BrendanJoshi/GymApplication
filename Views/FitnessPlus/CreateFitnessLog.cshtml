@@ -1,0 +1,221 @@
+﻿@model HealthLogViewModel
+@inject IUtility _Utility
+<style>
+    .star-rating {
+        display: flex;
+        justify-content: space-between;
+        width: 200px;
+    }
+
+    .star {
+        font-size: 30px;
+        cursor: pointer;
+        color: #d3d3d3; /* Light gray for unselected stars */
+        transition: color 0.3s ease;
+    }
+
+        .star.selected {
+            color: #f39c12; /* Gold for selected stars */
+        }
+
+        .star:hover {
+            color: #f39c12; /* Hover color */
+        }
+</style>
+<div class="row page-titles mx-0">
+    <div class="col-sm-12 p-md-0">
+        <div class="welcome-text">
+            <h4>Hi, welcome back!</h4>
+            <span class="ml-1">Create Fitness Log</span>
+        </div>
+    </div>
+    <div class="col-sm-12 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Form</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Fitness Log</a></li>
+        </ol>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Create Fitness Log</h4>
+    </div>
+    <div class="card-body">
+        <form asp-action="CreateFitnessLog" method="post">
+            @Html.HiddenFor(model => model.PersonalInformationId)
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Date" class="font-weight-bold">Date</label>
+                    <input type="date" asp-for="Date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <h5>🏋️‍♂️ Physical Activity</h5>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="ExerciseName" class="font-weight-bold">Exercise Type</label>
+                    <select asp-for="ExerciseName" asp-items="await _Utility.ExerciseType()" class="form-control" required>
+                        <option>- Exercise Type -</option>
+                    </select>
+                    <span asp-validation-for="ExerciseName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label asp-for="SetsOrReps" class="font-weight-bold">Sets/Reps</label>
+                    <input type="number" asp-for="SetsOrReps" class="form-control" min="1" />
+                    <span asp-validation-for="SetsOrReps" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="DurationMinutes" class="font-weight-bold">Duration (Minutes)</label>
+                    <input type="number" asp-for="DurationMinutes" class="form-control" min="1" />
+                    <span asp-validation-for="DurationMinutes" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="CaloriesBurned" class="font-weight-bold">Calories Burned</label>
+                    <input type="number" asp-for="CaloriesBurned" class="form-control" min="0" />
+                    <span asp-validation-for="CaloriesBurned" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="PersonalRatings" class="font-weight-bold">Personal Ratings</label>
+                    <div class="star-rating" id="star-rating">
+                        <!-- Generate 10 stars, each with a data-value from 1 to 10 -->
+                        @for (int i = 1; i <= 10; i++)
+                        {
+                            <span class="star" data-value="@i">&#9733;</span>
+                        }
+                    </div>
+                    <input type="hidden" asp-for="PersonalRatings" id="personalRatingValue" />
+                    <span asp-validation-for="PersonalRatings" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="StepTaken" class="font-weight-bold">Steps Taken </label>
+                    <input type="number" asp-for="StepTaken" class="form-control" min="1" />
+                    <span asp-validation-for="StepTaken" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Now Nutrition & Hydration section comes below the above fields -->
+            <div class="form-group col-md-12">
+                <h5>🥗 Nutrition & Hydration</h5>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label asp-for="Calories" class="font-weight-bold">Calories</label>
+                    <input type="number" asp-for="Calories" class="form-control" min="0" />
+                    <span asp-validation-for="Calories" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-2">
+                    <label asp-for="ProteinGrams" class="font-weight-bold">Protein (g)</label>
+                    <input type="number" asp-for="ProteinGrams" class="form-control" min="0" />
+                    <span asp-validation-for="ProteinGrams" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label asp-for="CarbGrams" class="font-weight-bold">Carbs (g)</label>
+                    <input type="number" asp-for="CarbGrams" class="form-control" min="0" />
+                    <span asp-validation-for="CarbGrams" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-2">
+                    <label asp-for="FatGrams" class="font-weight-bold">Fat (g)</label>
+                    <input type="number" asp-for="FatGrams" class="form-control" min="0" />
+                    <span asp-validation-for="FatGrams" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-2">
+                    <label asp-for="WaterIntake" class="font-weight-bold">Water Intake (Liters)</label>
+                    <input type="number" asp-for="WaterIntake" class="form-control" min="0" />
+                    <span asp-validation-for="WaterIntake" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="Supplements" class="font-weight-bold">Supplements (If any)</label>
+                    <input type="text" asp-for="Supplements" class="form-control" />
+                    <span asp-validation-for="Supplements" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="JunkConsumed" class="font-weight-bold">Junk Food Consumed</label>
+                    <input type="checkbox" asp-for="JunkConsumed" class="form-check-input" />
+                    <span asp-validation-for="JunkConsumed" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label asp-for="AlcoholConsumed" class="font-weight-bold">Alcohol Consumed</label>
+                    <input type="checkbox" asp-for="AlcoholConsumed" class="form-check-input" />
+                    <span asp-validation-for="AlcoholConsumed" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label asp-for="WeightKg" class="font-weight-bold">Weight (kg)</label>
+                    <input type="number" asp-for="WeightKg" class="form-control" min="0" />
+                    <span asp-validation-for="WeightKg" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label asp-for="WaistCm" class="font-weight-bold">Waist (cm)</label>
+                    <input type="number" asp-for="WaistCm" class="form-control" min="0" />
+                    <span asp-validation-for="WaistCm" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-2">
+                    <label asp-for="ChestCm" class="font-weight-bold">Chest (cm)</label>
+                    <input type="number" asp-for="ChestCm" class="form-control" min="0" />
+                    <span asp-validation-for="ChestCm" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-2">
+                    <label asp-for="HipCm" class="font-weight-bold">Hip (cm)</label>
+                    <input type="number" asp-for="HipCm" class="form-control" min="0" />
+                    <span asp-validation-for="HipCm" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-2">
+                    <label asp-for="BMI" class="font-weight-bold">BMI</label>
+                    <input type="number" asp-for="BMI" class="form-control" min="0" />
+                    <span asp-validation-for="BMI" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success btn-sm text-white">
+                    <i class="fa fa-save"></i> Save
+                </button>
+                <a asp-action="FitnessLog" class="btn btn-sm text-white" style="background-color:#424f63;">
+                    <i class="fa fa-arrow-left" aria-hidden="true"> Back </i>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Get all star elements
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('personalRatingValue');
+
+    // Add event listeners to each star
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            // Get the value of the clicked star from the data-value attribute
+            const rating = parseInt(star.getAttribute('data-value'));
+
+            // Update the hidden input value with the selected rating
+            ratingInput.value = rating;
+
+            // Remove 'selected' class from all stars
+            stars.forEach(star => star.classList.remove('selected'));
+
+            // Add 'selected' class to clicked star and all previous stars
+            for (let i = 0; i < rating; i++) {
+                stars[i].classList.add('selected');
+            }
+        });
+    });
+</script>

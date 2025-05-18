@@ -1,0 +1,902 @@
+[
+    {
+        "user_profile": {
+            "AgeGroupId": 2,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 2,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 2,
+            "StepWorkoutId": 2,
+            "WorkoutFrequencyId": 2,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 1 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 1 for StepWorkoutId 2"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 3,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 3,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 3,
+            "StepWorkoutId": 3,
+            "WorkoutFrequencyId": 3,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 2 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 2 for StepWorkoutId 3"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 4,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 4,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 1,
+            "StepWorkoutId": 4,
+            "WorkoutFrequencyId": 4,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 3 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 3 for StepWorkoutId 4"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 1,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 5,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 2,
+            "StepWorkoutId": 1,
+            "WorkoutFrequencyId": 1,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 4 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 4 for StepWorkoutId 1"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 2,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 6,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 3,
+            "StepWorkoutId": 2,
+            "WorkoutFrequencyId": 2,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 5 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 5 for StepWorkoutId 2"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 3,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 1,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 1,
+            "StepWorkoutId": 3,
+            "WorkoutFrequencyId": 3,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 6 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 6 for StepWorkoutId 3"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 4,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 2,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 2,
+            "StepWorkoutId": 4,
+            "WorkoutFrequencyId": 4,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 7 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 7 for StepWorkoutId 4"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 1,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 3,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 3,
+            "StepWorkoutId": 1,
+            "WorkoutFrequencyId": 1,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 8 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 8 for StepWorkoutId 1"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 2,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 4,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 1,
+            "StepWorkoutId": 2,
+            "WorkoutFrequencyId": 2,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 9 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 9 for StepWorkoutId 2"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 3,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 5,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 2,
+            "StepWorkoutId": 3,
+            "WorkoutFrequencyId": 3,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 10 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 10 for StepWorkoutId 3"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 4,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 6,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 3,
+            "StepWorkoutId": 4,
+            "WorkoutFrequencyId": 4,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 11 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 11 for StepWorkoutId 4"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 1,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 1,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 1,
+            "StepWorkoutId": 1,
+            "WorkoutFrequencyId": 1,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 12 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 12 for StepWorkoutId 1"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 2,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 2,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 2,
+            "StepWorkoutId": 2,
+            "WorkoutFrequencyId": 2,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 13 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 13 for StepWorkoutId 2"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 3,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 3,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 3,
+            "StepWorkoutId": 3,
+            "WorkoutFrequencyId": 3,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 14 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 14 for StepWorkoutId 3"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 4,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 4,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 1,
+            "StepWorkoutId": 4,
+            "WorkoutFrequencyId": 4,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 15 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 15 for StepWorkoutId 4"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 1,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 5,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 2,
+            "StepWorkoutId": 1,
+            "WorkoutFrequencyId": 1,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 16 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 16 for StepWorkoutId 1"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 2,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 6,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 3,
+            "StepWorkoutId": 2,
+            "WorkoutFrequencyId": 2,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 17 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 17 for StepWorkoutId 2"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 3,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 1,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 1,
+            "StepWorkoutId": 3,
+            "WorkoutFrequencyId": 3,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 18 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 18 for StepWorkoutId 3"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 4,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 2,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 2,
+            "StepWorkoutId": 4,
+            "WorkoutFrequencyId": 4,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 19 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 19 for StepWorkoutId 4"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 1,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 3,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 3,
+            "StepWorkoutId": 1,
+            "WorkoutFrequencyId": 1,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 20 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 20 for StepWorkoutId 1"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 2,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 4,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 1,
+            "StepWorkoutId": 2,
+            "WorkoutFrequencyId": 2,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 21 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 21 for StepWorkoutId 2"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 3,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 5,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 2,
+            "StepWorkoutId": 3,
+            "WorkoutFrequencyId": 3,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 22 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 22 for StepWorkoutId 3"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 4,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 6,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 3,
+            "StepWorkoutId": 4,
+            "WorkoutFrequencyId": 4,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 23 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 23 for StepWorkoutId 4"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 1,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 1,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 1,
+            "StepWorkoutId": 1,
+            "WorkoutFrequencyId": 1,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 24 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 24 for StepWorkoutId 1"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 2,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 2,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 2,
+            "StepWorkoutId": 2,
+            "WorkoutFrequencyId": 2,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 25 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 25 for StepWorkoutId 2"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 3,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 3,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 3,
+            "StepWorkoutId": 3,
+            "WorkoutFrequencyId": 3,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 26 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 26 for StepWorkoutId 3"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 4,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 4,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 1,
+            "StepWorkoutId": 4,
+            "WorkoutFrequencyId": 4,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 27 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 27 for StepWorkoutId 4"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 1,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 5,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 2,
+            "StepWorkoutId": 1,
+            "WorkoutFrequencyId": 1,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 28 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 28 for StepWorkoutId 1"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 2,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 6,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 3,
+            "StepWorkoutId": 2,
+            "WorkoutFrequencyId": 2,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 29 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 29 for StepWorkoutId 2"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 3,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 1,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 1,
+            "StepWorkoutId": 3,
+            "WorkoutFrequencyId": 3,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 30 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 30 for StepWorkoutId 3"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 4,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 2,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 2,
+            "StepWorkoutId": 4,
+            "WorkoutFrequencyId": 4,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 31 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 31 for StepWorkoutId 4"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 1,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 3,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 3,
+            "StepWorkoutId": 1,
+            "WorkoutFrequencyId": 1,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 32 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 32 for StepWorkoutId 1"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 2,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 4,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 1,
+            "StepWorkoutId": 2,
+            "WorkoutFrequencyId": 2,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 33 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 33 for StepWorkoutId 2"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 3,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 5,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 2,
+            "StepWorkoutId": 3,
+            "WorkoutFrequencyId": 3,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 34 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 34 for StepWorkoutId 3"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 4,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 6,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 3,
+            "StepWorkoutId": 4,
+            "WorkoutFrequencyId": 4,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 35 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 35 for StepWorkoutId 4"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 1,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 1,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 1,
+            "StepWorkoutId": 1,
+            "WorkoutFrequencyId": 1,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 36 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 36 for StepWorkoutId 1"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 2,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 2,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 2,
+            "StepWorkoutId": 2,
+            "WorkoutFrequencyId": 2,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 37 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 37 for StepWorkoutId 2"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 3,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 3,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 3,
+            "StepWorkoutId": 3,
+            "WorkoutFrequencyId": 3,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 38 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 38 for StepWorkoutId 3"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 4,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 4,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 1,
+            "StepWorkoutId": 4,
+            "WorkoutFrequencyId": 4,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 39 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 39 for StepWorkoutId 4"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 1,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 5,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 2,
+            "StepWorkoutId": 1,
+            "WorkoutFrequencyId": 1,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 40 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 40 for StepWorkoutId 1"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 2,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 6,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 3,
+            "StepWorkoutId": 2,
+            "WorkoutFrequencyId": 2,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 41 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 41 for StepWorkoutId 2"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 3,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 1,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 1,
+            "StepWorkoutId": 3,
+            "WorkoutFrequencyId": 3,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 42 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 42 for StepWorkoutId 3"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 4,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 2,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 2,
+            "StepWorkoutId": 4,
+            "WorkoutFrequencyId": 4,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 43 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 43 for StepWorkoutId 4"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 1,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 3,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 3,
+            "StepWorkoutId": 1,
+            "WorkoutFrequencyId": 1,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 44 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 44 for StepWorkoutId 1"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 2,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 4,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 1,
+            "StepWorkoutId": 2,
+            "WorkoutFrequencyId": 2,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 45 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 45 for StepWorkoutId 2"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 3,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 5,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 2,
+            "StepWorkoutId": 3,
+            "WorkoutFrequencyId": 3,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 46 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 46 for StepWorkoutId 3"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 4,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 6,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 3,
+            "StepWorkoutId": 4,
+            "WorkoutFrequencyId": 4,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 47 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 47 for StepWorkoutId 4"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 1,
+            "BodyTypeId": 1,
+            "BodyGoalId": 1,
+            "TargetBodyId": 1,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 1,
+            "StepWorkoutId": 1,
+            "WorkoutFrequencyId": 1,
+            "AdditionalGoalId": 1
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 48 based on BodyGoalId 1",
+            "SuggestedExercise": "Tailored workout plan 48 for StepWorkoutId 1"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 2,
+            "BodyTypeId": 2,
+            "BodyGoalId": 2,
+            "TargetBodyId": 2,
+            "ProblemAreaId": null,
+            "StepDietId": 2,
+            "StepWaterId": 2,
+            "StepWorkoutId": 2,
+            "WorkoutFrequencyId": 2,
+            "AdditionalGoalId": 2
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 49 based on BodyGoalId 2",
+            "SuggestedExercise": "Tailored workout plan 49 for StepWorkoutId 2"
+        }
+    },
+    {
+        "user_profile": {
+            "AgeGroupId": 3,
+            "BodyTypeId": 3,
+            "BodyGoalId": 3,
+            "TargetBodyId": 3,
+            "ProblemAreaId": null,
+            "StepDietId": 1,
+            "StepWaterId": 3,
+            "StepWorkoutId": 3,
+            "WorkoutFrequencyId": 3,
+            "AdditionalGoalId": 3
+        },
+        "suggested_plan": {
+            "SuggestedDiet": "Custom diet plan for profile 50 based on BodyGoalId 3",
+            "SuggestedExercise": "Tailored workout plan 50 for StepWorkoutId 3"
+        }
+    }
+]

@@ -1,0 +1,86 @@
+﻿@model AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="container">
+    <!-- Pie Chart for Gender Distribution -->
+    <h3>Gender Distribution</h3>
+    <canvas id="genderChart" width="400" height="400"></canvas>
+
+    <script>
+        var genderChartCtx = document.getElementById('genderChart').getContext('2d');
+        var genderChart = new Chart(genderChartCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Male', 'Female', 'Others'],
+                datasets: [{
+                    label: 'Gender Distribution',
+                    data: [@Model.MaleCount, @Model.FemaleCount, @Model.OtherCount],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                }]
+            }
+        });
+    </script>
+
+    <!-- Bar Chart for Age Group Stats -->
+    <h3>Age Group Distribution</h3>
+    <canvas id="ageGroupChart" width="400" height="400"></canvas>
+
+    <script>
+        var ageGroupChartCtx = document.getElementById('ageGroupChart').getContext('2d');
+        var ageGroupChart = new Chart(ageGroupChartCtx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Json.Serialize(Model.AgeGroupStats.Select(x => x.AgeGroupId).ToArray())),
+                datasets: [{
+                    label: 'Age Group Distribution',
+                    data: @Html.Raw(Json.Serialize(Model.AgeGroupStats.Select(x => x.Count).ToArray())),
+                    backgroundColor: '#36A2EB'
+                }]
+            }
+        });
+    </script>
+
+    <!-- Bar Chart for Body Goal Stats -->
+    <h3>Body Goal Distribution</h3>
+    <canvas id="bodyGoalChart" width="400" height="400"></canvas>
+
+    <script>
+        var bodyGoalChartCtx = document.getElementById('bodyGoalChart').getContext('2d');
+        var bodyGoalChart = new Chart(bodyGoalChartCtx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Json.Serialize(Model.BodyGoalStats.Select(x => x.BodyGoalId).ToArray())),
+                datasets: [{
+                    label: 'Body Goal Distribution',
+                    data: @Html.Raw(Json.Serialize(Model.BodyGoalStats.Select(x => x.Count).ToArray())),
+                    backgroundColor: '#FFCE56'
+                }]
+            }
+        });
+    </script>
+
+    <!-- Bar Chart for Body Type Stats -->
+    <h3>Body Type Distribution</h3>
+    <canvas id="bodyTypeChart" width="400" height="400"></canvas>
+
+    <script>
+        var bodyTypeChartCtx = document.getElementById('bodyTypeChart').getContext('2d');
+        var bodyTypeChart = new Chart(bodyTypeChartCtx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Json.Serialize(Model.BodyTypeStats.Select(x => x.BodyTypeId).ToArray())),
+                datasets: [{
+                    label: 'Body Type Distribution',
+                    data: @Html.Raw(Json.Serialize(Model.BodyTypeStats.Select(x => x.Count).ToArray())),
+                    backgroundColor: '#FF6384'
+                }]
+            }
+        });
+    </script>
+
+

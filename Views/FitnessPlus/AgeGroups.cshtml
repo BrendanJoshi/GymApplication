@@ -1,0 +1,71 @@
+﻿
+@model IEnumerable<AgeGroupViewModel>
+
+<div class="row page-titles mx-0">
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>Hi, welcome back!</h4>
+            <span class="ml-1">Age Groups</span>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Setup</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Age Groups</a></li>
+        </ol>
+    </div>
+</div>
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Age Groups</h4>
+            <a asp-action="CreateAgeGroup" class="btn btn-info btn-sm" style="margin-right: 5px;">
+                <i class="fa fa-add"></i> Create
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th>SN</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            int i = 1;
+                            foreach (var item in Model)
+                            {
+                                <tr style="text-align: center;">
+                                    <td>@i</td>
+                                    <td>@item.Name</td>
+                                    <td><img src="@item.ImageUrl" style="width: 50px; height: 50px;" alt="Image" /></td>
+                                    <td>
+                                        <a asp-action="AgeGroupDetails" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                                            <i class="fa fa-eye"></i> View
+                                        </a>
+                                        <a asp-action="CreateAgeGroup" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" style="text-align: center; font-weight: bold;">No Records Found</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

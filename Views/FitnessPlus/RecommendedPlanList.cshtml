@@ -1,0 +1,78 @@
+﻿@model IEnumerable<RecommendDietAndExercisePlanViewModel>
+
+@{
+    var aa = User.IsInRole("Admin");
+}
+
+<div class="row page-titles mx-0">
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>Hi, welcome back!</h4>
+            <span class="ml-1">RecommendedPlanList</span>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+    </div>
+</div>
+
+<div class="col-12">
+    <div class="card">
+        @if (aa==true)
+        {
+            <div class="card-header">
+                <h4 class="card-title"> Recommend Diet to User </h4>
+                <a asp-action="CreateRecommendedPlan" class="btn btn-info btn-sm" style="margin-right: 5px;">
+                    <i class="fa fa-add"></i> Create
+                </a>
+            </div>
+        }
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th>SN</th>
+                            <th>Name</th>
+                            <th>DietName</th>
+                            <th>ExerciseName</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            int i = 1;
+                            foreach (var item in Model)
+                            {
+                                <tr style="text-align: center;">
+                                    <td>@i</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.DietName</td>
+                                    <td>@item.ExerciseName</td>
+                                    <td>
+                                        <a asp-action="RecommendedPlanDetails" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                                            <i class="fa fa-eye"></i> View
+                                        </a>
+                                        @if (aa == true)
+                                        {
+                                            <a asp-action="CreateRecommendedPlan" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" style="text-align: center; font-weight: bold;">No Records Found</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

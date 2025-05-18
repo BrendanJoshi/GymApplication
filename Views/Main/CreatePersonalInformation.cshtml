@@ -1,0 +1,93 @@
+﻿@*  @model PersonalInfromationViewModel
+@inject IUtility _Utility
+@{
+
+    ViewData["Title"] = "Create Personal Information";
+}
+<div class="row page-titles mx-0">
+    <div class="col-sm-12 p-md-0">
+        <div class="welcome-text">
+            <h4>Hi, welcome back!</h4>
+            <span class="ml-1">Create PersonalInformation</span>
+        </div>
+    </div>
+    <div class="col-sm-12 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Form</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Personal Information</a></li>
+        </ol>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Personal Information</h4>
+    </div>
+    <div class="card-body">
+        <div class="basic-form">
+            <form asp-action="CreatePersonalInformation" method="post" enctype="multipart/form-data" style="background-color: #f9f9f9; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+                @Html.HiddenFor(model => model.Id)
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label asp-for="FirstName" style="font-weight: bold;">First Name</label>
+                        <input type="text" asp-for="FirstName" class="form-control">
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label asp-for="LastName" style="font-weight: bold;"></label>
+                        <input type="text" asp-for="LastName" class="form-control">
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label asp-for="GenderId" style="font-weight: bold;">Gender</label>
+                        <select asp-for="GenderId" asp-items="await _Utility.GetGenderList()" class="form-control">
+                            <option value="">Select Gender</option>
+                        </select>
+                        <span asp-validation-for="GenderId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label asp-for="MobileNumber" style="font-weight: bold;"></label>
+                        <input type="text" asp-for="MobileNumber" class="form-control">
+                        <span asp-validation-for="MobileNumber" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label asp-for="Email" style="font-weight: bold;"></label>
+                        <input type="email" asp-for="Email" class="form-control">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label asp-for="ProfilePictureImg" class="control-label"></label>
+                        <input type="file" asp-for="ProfilePictureImg" class="form-control" accept="image/png, image/gif, image/jpeg, application/pdf" />
+                        <span asp-validation-for="ProfilePictureImg" class="text-danger"></span>
+
+                    </div>                  
+                    <div class="border-top">
+                        <div class="card-body d-flex gap-3" style="float:right;">
+
+                            <button type="submit" class="btn btn-success btn-sm text-white">
+                                <i class="fa fa-save">
+                                    <span class="fw-normal">Save </span>
+                                </i>
+                            </button>
+                            <a asp-action="PersonalInformation" class="btn  btn-sm  text-white"
+                               style=" background-color:#424f63;">
+                                <i class="fa fa-arrow-left" aria-hidden="true"> Back </i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+         
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+ *@

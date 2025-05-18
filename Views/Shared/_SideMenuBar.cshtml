@@ -1,0 +1,74 @@
+﻿<div class="nano">
+    <div class="nano-content">
+        <!-- Logo -->
+        <div class="logo" style="padding: 20px; text-align: center;">
+            <a asp-controller="Home" asp-action="Index" style="font-size: 1.2rem; font-weight: bold; color: #fff;">
+                <span>Fitness Tracking System</span>
+            </a>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-nav" style="list-style: none; padding-left: 0; font-size: 15px;">
+
+            <!-- Main Label -->
+            <li class="label" style="padding: 10px 20px; font-weight: 600; color: #aaa;">Main</li>
+
+            <!-- Dashboard -->
+            <li class="active">
+                <a asp-controller="Home" asp-action="Index" style="display: flex; align-items: center; padding: 10px 20px; color: #fff;">
+                    <i class="ti-home" style="margin-right: 10px;"></i> Dashboard
+                </a>
+            </li>
+
+            <!-- Apps Section -->
+            <li class="label" style="padding: 10px 20px; font-weight: 600; color: #aaa;">Apps</li>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <!-- Setup Section -->
+                <li>
+                    <a class="sidebar-sub-toggle" style="display: flex; align-items: center; padding: 10px 20px; color: #fff;">
+                        <i class="ti-settings" style="margin-right: 10px;"></i> Setup
+                        <span class="sidebar-collapse-icon ti-angle-down" style="margin-left: auto;"></span>
+                    </a>
+                    <ul style="padding-left: 20px;">
+                        <li><a asp-controller="FitnessPlus" asp-action="AgeGroups"><i class="fa fa-child"></i> Age-Group</a></li>
+                        <li><a asp-controller="FitnessPlus" asp-action="BodyTypes"><i class="fa fa-user"></i> Body Types</a></li>
+                        <li><a asp-controller="FitnessPlus" asp-action="BodyGoals"><i class="fa fa-bullseye"></i> Body Goals</a></li>
+                        <li><a asp-controller="FitnessPlus" asp-action="TargetBodies"><i class="fa fa-crosshairs"></i> Target Bodies</a></li>
+                        <li><a asp-controller="FitnessPlus" asp-action="ProblemAreas"><i class="fa fa-exclamation-triangle"></i> Problem Areas</a></li>
+                        <li><a asp-controller="FitnessPlus" asp-action="StepDiets"><i class="fa fa-utensils"></i> Step Diets</a></li>
+                        <li><a asp-controller="FitnessPlus" asp-action="StepWaters"><i class="fa fa-tint"></i> Step Waters</a></li>
+                        <li><a asp-controller="FitnessPlus" asp-action="StepWorkouts"><i class="fa fa-running"></i> Step Workouts</a></li>
+                        <li><a asp-controller="FitnessPlus" asp-action="AdditionalGoals"><i class="fa fa-plus-circle"></i> Additional Goals</a></li>
+                        <li><a asp-controller="FitnessPlus" asp-action="StepWorkoutsFrequency"><i class="fa fa-calendar-alt"></i> Step Workouts Frequency</a></li>
+                    </ul>
+                </li>
+
+                <!-- Admin-Only Pages -->
+                <li><a asp-controller="FitnessPlus" asp-action="PersonalInformationList"><i class="fa fa-users"></i> Registered Accounts</a></li>
+                <li><a asp-controller="FitnessPlus" asp-action="RecommendedPlanList"><i class="fa fa-list"></i> Recommend Diet & Exercise</a></li>
+            }
+            else
+            {
+                <!-- User Pages -->
+                <li><a asp-controller="FitnessPlus" asp-action="PersonalInformationList">👨‍🏫 My Profile</a></li>
+                <li><a asp-controller="FitnessPlus" asp-action="RecommendedPlanList">🍽️ Diet Plan</a></li>
+                <li><a asp-controller="FitnessPlus" asp-action="FitnessLog">🏋️ Fitness Plan</a></li>
+                <li><a asp-controller="FitnessPlus" asp-action="ViewStatistics">❤️ Statistics</a></li>
+            }
+
+            <!-- Logout -->
+            <li style="padding: 10px 20px;">
+                <form asp-action="Logout" asp-controller="Account" asp-area="Identity" style="display: inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer; color: inherit; font: inherit; display: flex; align-items: center;">
+                        <i class="fa fa-sign-out-alt" style="margin-right: 8px;"></i> Logout
+                    </button>
+                </form>
+
+            </li>
+
+        </ul>
+    </div>
+</div>

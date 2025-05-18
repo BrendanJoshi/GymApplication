@@ -1,0 +1,81 @@
+﻿@model IEnumerable<PersonalInformationViewModel>
+
+<div class="row page-titles mx-0">
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>Hi, welcome back!</h4>
+            <span class="ml-1">Registered Users</span>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Setup</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Step Waters</a></li>
+        </ol>
+    </div>
+</div>
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Registered Users</h4>
+            @*   <a asp-action="CreateStepWater" class="btn btn-info btn-sm" style="margin-right: 5px;">
+            <i class="fa fa-add"></i> Create
+            </a> *@
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="example" class="table table-striped" style="min-width: 845px;">
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th>SN</th>
+                            <th>Name</th>
+                            <th>Mobile Number</th>
+                            <th>Email</th>
+                            <th>Age Group</th>
+                            <th>Profile Picture</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            int i = 1;
+                            foreach (var item in Model)
+                            {
+                                <tr style="text-align: center;">
+                                    <td>@i</td>
+                                    <td>@item.FirstName @item.LastName</td>
+                                    <td>@item.MobileNumber</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.AgeGroupName</td>
+                                    <td></td>
+                                    <td>
+                                        <img src="@item.ProfilePictureImg"
+                                             style="width: 50px; height: 50px;"
+                                             onerror="this.onerror=null; this.src='~/images/profile.png';"
+                                             alt="Profile Picture" />
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="StepWaterDetails" asp-route-id="@item.Id" class="btn btn-info btn-sm" style="margin-right: 5px;">
+                                            <i class="fa fa-eye"></i> View
+                                        </a>
+
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" style="text-align: center; font-weight: bold;">No Records Found</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

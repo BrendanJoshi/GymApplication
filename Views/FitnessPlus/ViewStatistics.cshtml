@@ -1,0 +1,64 @@
+﻿@model List<WeeklyProgressViewModel>
+
+<div class="container mt-4">
+    <h2>Weekly Fitness Progress</h2>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5>Weekly Overview</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>Start Date (Day)</th>
+                            <th>End Date (Day)</th>
+                            <th>Total Calories Burned</th>
+                            <th>Total Steps Taken</th>
+                            <th>Average Weight (kg)</th>
+                            <th>Average BMI</th>
+                            <th>Total Water Intake (glass)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var week in Model)
+                        {
+                            <tr>
+                                <td>@week.WeekNumber</td>
+                                <td>@week.StartDate.ToString("yyyy-MM-dd (dddd)")</td> <!-- Add day of week -->
+                                <td>@week.EndDate.ToString("yyyy-MM-dd (dddd)")</td>   <!-- Add day of week -->
+                                <td>@week.TotalCaloriesBurned</td>
+                                <td>@week.TotalStepsTaken</td>
+                                <td>@week.AverageWeight</td>
+                                <td>@week.AverageBMI</td>
+                                <td>@week.TotalWaterIntake</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Display Total Statistics -->
+    <div class="card">
+        <div class="card-body">
+            <h5>Total Progress:</h5>
+            <div>
+                <strong>Total Calories Burned:</strong> @Model.Sum(x => x.TotalCaloriesBurned)
+            </div>
+            <div>
+                <strong>Total Steps Taken:</strong> @Model.Sum(x => x.TotalStepsTaken)
+            </div>
+            <div>
+                <strong>Average Weight:</strong> @Model.Average(x => x.AverageWeight)
+            </div>
+            <div>
+                <strong>Average BMI:</strong> @Model.Average(x => x.AverageBMI)
+            </div>
+            <div>
+                <strong>Total Water Intake:</strong> @Model.Sum(x => x.TotalWaterIntake)
+            </div>
+        </div>
+    </div>
+</div>

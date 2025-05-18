@@ -1,0 +1,598 @@
+﻿@{
+    Layout = null;
+}
+@model PersonalInformationViewModel
+@inject IUtility _Utility
+
+<form method="post" action="PersonalInformation" id="personalInfoForm" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <!-- Hidden inputs for storing selected IDs -->
+    <input type="hidden" id="inputAgeGroup" name="AgeGroupId" />
+    <input type="hidden" id="inputBodyType" name="BodyTypeId" />
+    <input type="hidden" id="inputBodyGoal" name="BodyGoalId" />
+    <input type="hidden" id="inputTargetBody" name="TargetBodyId" />
+    <input type="hidden" id="inputProblemAreas" name="ProblemAreaIds" />
+    <input type="hidden" id="inputStepDiet" name="StepDietId" />
+    <input type="hidden" id="inputStepWater" name="StepWaterId" />
+    <input type="hidden" id="inputStepWorkout" name="StepWorkoutId" />
+    <input type="hidden" id="inputAdditionalGoals" name="AdditionalGoalId" />
+    <input type="hidden" id="inputWorkoutFrequency" name="WorkoutFrequencyId" />
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Build Your Perfect Body</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            .step-container {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .step-content {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 50px;
+            }
+
+            .step-item {
+                position: relative;
+                width: 150px;
+                text-align: center;
+            }
+
+           /*  .image-container {
+                position: relative;
+                width: 150px;
+                height: 150px;
+                overflow: hidden;
+            }
+
+            .step-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+
+            .step-item:hover .step-image {
+                transform: scale(1.2);
+            } */
+            .image-container {
+    position: relative;
+    width: 180px; /* Slightly increased size for better visibility */
+    height: 180px;
+    overflow: hidden;
+    border-radius: 10px; /* Optional: Adds a subtle rounded corner */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.step-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.step-item:hover .step-image {
+    transform: scale(1.2);
+    filter: brightness(1.1) contrast(1.1); /* Enhances the image on hover */
+}
+
+.step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+/* Responsive Adjustments */
+@@media (max-width: 768px) {
+    .image-container {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@@media (max-width: 480px) {
+    .image-container {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+
+            .step-btn {
+                position: absolute;
+                bottom: 5px;
+                left: 5px;
+                right: 5px;
+                background-color: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                padding: 5px;
+                font-size: 12px;
+                cursor: pointer;
+                opacity: 0;
+                transition: opacity 0.3s;
+                font-weight:bold;
+               
+                
+            }
+
+            .step-item:hover .step-btn {
+                opacity: 1;
+            }
+            /* Style for selected button */
+            .step-btn.selected {
+                border: 2px solid green;
+                opacity: 1;
+            }
+
+            .step-label {
+                font-size: 14px;
+                margin-top: 10px;
+            }
+
+            .navigation-buttons {
+                margin-top: 20px;
+            }
+
+                .navigation-buttons button {
+                    margin: 0 10px;
+                    padding: 10px 20px;
+                    font-size: 16px;
+                    cursor: pointer;
+                }
+
+            .form-group {
+                margin: 15px auto;
+                width: 300px;
+                text-align: left;
+            }
+
+                .form-group label {
+                    display: block;
+                    margin-bottom: 5px;
+                    font-weight: bold;
+                }
+
+                .form-group input, .form-group select {
+                    width: 100%;
+                    padding: 8px;
+                    font-size: 14px;
+                    box-sizing: border-box;
+                }
+
+            .text-danger {
+                color: red;
+            }
+            /* Set page background to black and ensure text remains readable */
+            body {
+                background-color: #000;
+                color: #fff;
+            }
+
+            /* Center the main container on the page */
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+            }
+
+            /* Make banner images bigger by using full width and maintaining aspect ratio */
+            .image-container {
+                width: 100%;
+                height: auto; /* Let the image define the height */
+                overflow: hidden;
+            }
+
+            .step-image {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            /* Optionally, if you have a banner section, you can add extra padding */
+            .step-container {
+                padding: 2rem;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <section class="main-content">
+            <!-- Step 1: Age Group Selection -->
+            <div id="age-group-container" class="step-container">
+                <h1>BUILD YOUR PERFECT BODY</h1>
+                <h2>ACCORDING TO YOUR AGE AND BMI</h2>
+                <div class="step-content">
+                    @foreach (var item in Model.AgeGroupList)
+                    {
+                        <div class="step-item">
+                            <div class="image-container">
+                                <img src="@item.ImageUrl" alt="@item.Name Age Group" class="step-image">
+                                <button type="button" class="step-btn" onclick="selectAgeGroup('@item.Id', this)">Select</button>
+                            </div>
+                            <div class="step-label">@item.Name</div>
+                        </div>
+                    }
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="nextStep('body-type-container')">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Body Type Selection -->
+            <div id="body-type-container" class="step-container hidden">
+                <h2>Choose your body type</h2>
+                <div class="step-content">
+                    @foreach (var item in Model.BodyTypeList)
+                    {
+                        <div class="step-item">
+                            <div class="image-container">
+                                <img src="@item.ImageUrl" alt="@item.Name Body Type" class="step-image">
+                                <button type="button" class="step-btn" onclick="selectBodyType('@item.Id', this)">Select</button>
+                            </div>
+                            <div class="step-label">@item.Name</div>
+                        </div>
+                    }
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="previousStep('age-group-container')">Previous</button>
+                    <button type="button" onclick="nextStep('body-goal-container')">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Body Goal Selection -->
+            <div id="body-goal-container" class="step-container hidden">
+                <h2>What is your body goal?</h2>
+                <div class="step-content">
+                    @foreach (var item in Model.BodyGoalList)
+                    {
+                        <div class="step-item">
+                            <div class="image-container">
+                                <img src="@item.ImageUrl" alt="@item.Name Body Goal" class="step-image">
+                                <button type="button" class="step-btn" onclick="selectBodyGoal('@item.Id', this)">Select</button>
+                            </div>
+                            <div class="step-label">@item.Name</div>
+                        </div>
+                    }
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="previousStep('body-type-container')">Previous</button>
+                    <button type="button" onclick="nextStep('target-body-container')">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Target Body Selection -->
+            <div id="target-body-container" class="step-container hidden">
+                <h2>Choose your target body</h2>
+                <div class="step-content">
+                    @foreach (var item in Model.TargetBodyList)
+                    {
+                        <div class="step-item">
+                            <div class="image-container">
+                                <img src="@item.ImageUrl" alt="@item.Name Target Body" class="step-image">
+                                <button type="button" class="step-btn" onclick="selectTargetBody('@item.Id', this)">Select</button>
+                            </div>
+                            <div class="step-label">@item.Name</div>
+                        </div>
+                    }
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="previousStep('body-goal-container')">Previous</button>
+                    <button type="button" onclick="nextStep('problem-area-container')">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Problem Area Selection -->
+            <div id="problem-area-container" class="step-container hidden">
+                <h2>Select your problem areas</h2>
+                <div class="step-content">
+                    @foreach (var item in Model.ProblemAreaList)
+                    {
+                        <div class="step-item">
+                            <div class="image-container">
+                                <img src="@item.ImageUrl" alt="@item.Name Problem Area" class="step-image">
+                                <button type="button" class="step-btn" onclick="selectProblemArea('@item.Id', this)">Select</button>
+                            </div>
+                            <div class="step-label">@item.Name</div>
+                        </div>
+                    }
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="previousStep('target-body-container')">Previous</button>
+                    <button type="button" onclick="nextStep('step-diet-container')">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 6: Diet Plan Selection -->
+            <div id="step-diet-container" class="step-container hidden">
+                <h2>Choose your diet plan</h2>
+                <div class="step-content">
+                    @foreach (var item in Model.StepDietList)
+                    {
+                        <div class="step-item">
+                            <div class="image-container">
+                                <img src="@item.ImageUrl" alt="@item.Name Diet Plan" class="step-image">
+                                <button type="button" class="step-btn" onclick="selectStepDiet('@item.Id', this)">Select</button>
+                            </div>
+                            <div class="step-label">@item.Name</div>
+                        </div>
+                    }
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="previousStep('problem-area-container')">Previous</button>
+                    <button type="button" onclick="nextStep('step-water-container')">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 7: Water Intake Selection -->
+            <div id="step-water-container" class="step-container hidden">
+                <h2>Choose your water intake plan</h2>
+                <div class="step-content">
+                    @foreach (var item in Model.StepWaterList)
+                    {
+                        <div class="step-item">
+                            <div class="image-container">
+                                <img src="@item.ImageUrl" alt="@item.Name Water Plan" class="step-image">
+                                <button type="button" class="step-btn" onclick="selectStepWater('@item.Id', this)">Select</button>
+                            </div>
+                            <div class="step-label">@item.Name</div>
+                        </div>
+                    }
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="previousStep('step-diet-container')">Previous</button>
+                    <button type="button" onclick="nextStep('step-workout-container')">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 8: Workout Plan Selection -->
+            <div id="step-workout-container" class="step-container hidden">
+                <h2>Choose your workout plan</h2>
+                <div class="step-content">
+                    @foreach (var item in Model.StepWorkoutList)
+                    {
+                        <div class="step-item">
+                            <div class="image-container">
+                                <img src="@item.ImageUrl" alt="@item.Name Workout Plan" class="step-image">
+                                <button type="button" class="step-btn" onclick="selectStepWorkout('@item.Id', this)">Select</button>
+                            </div>
+                            <div class="step-label">@item.Name</div>
+                        </div>
+                    }
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="previousStep('step-water-container')">Previous</button>
+                    <button type="button" onclick="nextStep('additional-goal-container')">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 9: Additional Goals Selection -->
+            <div id="additional-goal-container" class="step-container hidden">
+                <h2>Select additional goals</h2>
+                <div class="step-content">
+                    @foreach (var item in Model.AdditionalGoalList)
+                    {
+                        <div class="step-item">
+                            <div class="image-container">
+                                <img src="@item.ImageUrl" alt="@item.Name Additional Goal" class="step-image">
+                                <button type="button" class="step-btn" onclick="selectAdditionalGoal('@item.Id', this)">Select</button>
+                            </div>
+                            <div class="step-label">@item.Name</div>
+                        </div>
+                    }
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="previousStep('step-workout-container')">Previous</button>
+                    <button type="button" onclick="nextStep('workout-frequency-container')">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 10: Workout Frequency Selection -->
+            <div id="workout-frequency-container" class="step-container hidden">
+                <h2>Choose your workout frequency</h2>
+                <div class="step-content">
+                    @foreach (var item in Model.WorkoutFrequencyList)
+                    {
+                        <div class="step-item">
+                            <div class="image-container">
+                                <img src="@item.ImageUrl" alt="@item.Name Workout Frequency" class="step-image">
+                                <button type="button" class="step-btn" onclick="selectWorkoutFrequency('@item.Id', this)">Select</button>
+                            </div>
+                            <div class="step-label">@item.Name</div>
+                        </div>
+                    }
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="previousStep('additional-goal-container')">Previous</button>
+                    <button type="button" onclick="nextStep('personal-details-container')">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 11: Personal Details -->
+            <div id="personal-details-container" class="step-container hidden">
+                <h2>Enter Your Personal Details</h2>
+                <div class="form-group">
+                    <label asp-for="FirstName">First Name</label>
+                    <input asp-for="FirstName" type="text" placeholder="Enter First Name" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName">Last Name</label>
+                    <input asp-for="LastName" type="text" placeholder="Enter Last Name" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MobileNumber">Mobile Number</label>
+                    <input asp-for="MobileNumber" type="text" placeholder="Enter Mobile Number" />
+                    <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Height"> Height </label>
+                    <input asp-for="Height" type="number" placeholder="Enter Height" />
+                    <span asp-validation-for="Height" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Weight"> Weight </label>
+                    <input asp-for="Weight" type="number" placeholder="Enter WeightWeight must be between 0 and 500 kg." />
+                    <span asp-validation-for="Weight" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email">Email</label>
+                    <input asp-for="Email" type="email" placeholder="Enter Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="fw-bold">Gender</label>
+                    <select asp-for="GenderId" asp-items="await _Utility.GetGenderList()" class="form-control" required>
+                        <option disabled selected>- Select Gender -</option>
+                    </select>
+                    <span asp-validation-for="GenderId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input asp-for="Password" type="password" placeholder="Enter Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword">Confirm Password</label>
+                    <input asp-for="ConfirmPassword" type="password" placeholder="Confirm Password" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProfilePictureImg">Upload Profile Photo</label>
+                    <input type="file" asp-for="ProfilePictureImg" accept="image/*" />
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="previousStep('workout-frequency-container')">Previous</button>
+                    <button type="submit">Save</button>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Variables to hold selected IDs
+            let selectedAge = null;
+            let selectedBodyType = null;
+            let selectedBodyGoal = null;
+            let selectedTargetBody = null;
+            let selectedProblemAreas = [];
+            let selectedStepDiet = null;
+            let selectedStepWater = null;
+            let selectedStepWorkout = null;
+            let selectedAdditionalGoals = [];
+            let selectedWorkoutFrequency = null;
+
+            // Utility to remove 'selected' class from sibling buttons
+            function updateSelection(containerId, btn) {
+                const container = document.getElementById(containerId);
+                const buttons = container.querySelectorAll('.step-btn');
+                buttons.forEach(function (b) {
+                    b.classList.remove('selected');
+                });
+                btn.classList.add('selected');
+            }
+
+            function selectAgeGroup(id, btn) {
+                selectedAge = id;
+                document.getElementById('inputAgeGroup').value = id;
+                updateSelection('age-group-container', btn);
+                console.log('Selected AgeGroupId:', id);
+            }
+
+            function selectBodyType(id, btn) {
+                selectedBodyType = id;
+                document.getElementById('inputBodyType').value = id;
+                updateSelection('body-type-container', btn);
+                console.log('Selected BodyTypeId:', id);
+            }
+
+            function selectBodyGoal(id, btn) {
+                selectedBodyGoal = id;
+                document.getElementById('inputBodyGoal').value = id;
+                updateSelection('body-goal-container', btn);
+                console.log('Selected BodyGoalId:', id);
+            }
+
+            function selectTargetBody(id, btn) {
+                selectedTargetBody = id;
+                document.getElementById('inputTargetBody').value = id;
+                updateSelection('target-body-container', btn);
+                console.log('Selected TargetBodyId:', id);
+            }
+
+            function selectProblemArea(id, btn) {
+                if (!selectedProblemAreas.includes(id)) {
+                    selectedProblemAreas.push(id);
+                    document.getElementById('inputProblemAreas').value = selectedProblemAreas.join(',');
+                    updateSelection('problem-area-container', btn);
+                    console.log('Selected ProblemAreaIds:', selectedProblemAreas);
+                }
+            }
+
+            function selectStepDiet(id, btn) {
+                selectedStepDiet = id;
+                document.getElementById('inputStepDiet').value = id;
+                updateSelection('step-diet-container', btn);
+                console.log('Selected StepDietId:', id);
+            }
+
+            function selectStepWater(id, btn) {
+                selectedStepWater = id;
+                document.getElementById('inputStepWater').value = id;
+                updateSelection('step-water-container', btn);
+                console.log('Selected StepWaterId:', id);
+            }
+
+            function selectStepWorkout(id, btn) {
+                selectedStepWorkout = id;
+                document.getElementById('inputStepWorkout').value = id;
+                updateSelection('step-workout-container', btn);
+                console.log('Selected StepWorkoutId:', id);
+            }
+
+            function selectAdditionalGoal(id, btn) {
+                selectedAdditionalGoals = id; // Store a single value instead of an array
+                document.getElementById('inputAdditionalGoals').value = id;
+                updateSelection('additional-goal-container', btn);
+                console.log('Selected AdditionalGoalId:', id);
+            }
+
+            function selectWorkoutFrequency(id, btn) {
+                selectedWorkoutFrequency = id;
+                document.getElementById('inputWorkoutFrequency').value = id;
+                updateSelection('workout-frequency-container', btn);
+                console.log('Selected WorkoutFrequencyId:', id);
+            }
+
+           
+            function nextStep(nextStepId) {
+                document.querySelector('.step-container:not(.hidden)').classList.add('hidden');
+                document.getElementById(nextStepId).classList.remove('hidden');
+            }
+
+            function previousStep(previousStepId) {
+                document.querySelector('.step-container:not(.hidden)').classList.add('hidden');
+                document.getElementById(previousStepId).classList.remove('hidden');
+            }
+        </script>
+    </body>
+</form>

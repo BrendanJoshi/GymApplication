@@ -1,0 +1,558 @@
+﻿@model PersonalInformationViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet and Exercise Plan</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f2f2f2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .plan-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .plan-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container plan-container">
+        <div class="plan-header">
+            <h1>Your Personalized Diet and Exercise Plan</h1>
+            <p>Based on your selected preferences, see your detailed recommendations below.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card p-4">
+                    <div class="card-body">
+                        <h2 class="card-title">Diet Plan</h2>
+                        <div id="dietPlanText" class="card-text"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-4">
+                    <div class="card-body">
+                        <h2 class="card-title">Exercise Plan</h2>
+                        <div id="exercisePlanText" class="card-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve values from the model (ensure these are numbers)
+        var AgeGroupId = @Model.AgeGroupId;
+        var BodyTypeId = @Model.BodyTypeId;
+        var BodyGoalId = @Model.BodyGoalId;
+        var TargetBodyId = @Model.TargetBodyId;
+        var StepDietId = @Model.StepDietId;
+        var StepWaterId = @Model.StepWaterId;
+        var StepWorkoutId = @Model.StepWorkoutId;
+        var AdditionalGoalId = @Model.AdditionalGoalId;
+        var WorkoutFrequencyId = @Model.WorkoutFrequencyId;
+
+        var key = `${AgeGroupId}-${BodyTypeId}-${BodyGoalId}-${TargetBodyId}-${StepDietId}-${StepWaterId}-${StepWorkoutId}-${AdditionalGoalId}-${WorkoutFrequencyId}`;
+
+        var dietPlan = "";
+        switch (key) {
+            case "1-1-1-1-1-1-1-1-1":
+                dietPlan = `
+                <ul>
+                    <li><strong>Breakfast (7:00–9:00 AM):</strong> 
+                    Scrambled eggs with spinach and whole-grain toast – 
+                    high in protein and fiber (350 kcal).</li>
+                    <li><strong>Mid-Morning Snack (10:30 AM):</strong>
+                    Cottage cheese with sliced pineapple – protein and digestive enzymes (200 kcal).</li>
+                    <li><strong>Lunch (12:30–1:30 PM):</strong> Turkey breast wrap with mixed greens, hummus, and a whole-wheat tortilla – lean protein and healthy carbs (450 kcal).</li>
+                    <li><strong>Afternoon Snack (3:30 PM):</strong> Carrot sticks with guacamole – fiber and healthy fats (200 kcal).</li>
+                    <li><strong>Dinner (6:30–7:30 PM):</strong> Stir-fried tofu with brown rice and mixed vegetables – plant-based protein and nutrients (450 kcal).</li>
+                    <li><strong>Optional Evening Snack (9:00 PM):</strong> A small bowl of air-popped popcorn with a dash of sea salt – light and satisfying (150 kcal).</li>
+                    <li><strong>Tips:</strong>
+                        <ul>
+                            <li>Drink 8–10 cups of water daily.</li>
+                            <li>Practice portion control using hand measurements.</li>
+                            <li>Eat every 3–4 hours to maintain energy and reduce cravings.</li>
+                            <li>Prioritize whole, unprocessed foods.</li>
+                            <li>Enjoy treats mindfully once or twice a week.</li>
+                        </ul>
+                    </li>
+                      </ul>`;
+                break;
+            case "2-2-1-2-1-2-2-2-2":
+                dietPlan = `
+                <ul>
+                    <li><strong>Breakfast (7:00–9:00 AM):</strong> Chia seed pudding with mixed berries and a drizzle of honey – rich in omega-3 and antioxidants (350 kcal).</li>
+                    <li><strong>Mid-Morning Snack (10:30 AM):</strong> Boiled egg with a handful of walnuts – protein and healthy fats (200 kcal).</li>
+                    <li><strong>Lunch (12:30–1:30 PM):</strong> Grilled shrimp with brown rice and roasted zucchini – lean protein and fiber (450 kcal).</li>
+                    <li><strong>Afternoon Snack (3:30 PM):</strong> Protein smoothie with almond milk, banana, and a scoop of protein powder – muscle support and energy (200 kcal).</li>
+                    <li><strong>Dinner (6:30–7:30 PM):</strong> Lentil soup with a side of whole-grain pita and a mixed green salad – hearty and nutrient-rich (450 kcal).</li>
+                    <li><strong>Optional Evening Snack (9:00 PM):</strong> Dark chocolate square with warm skim milk – a small, comforting treat (150 kcal).</li>
+                    <li><strong>Tips:</strong>
+                        <ul>
+                            <li>Drink 8–10 cups of water daily.</li>
+                            <li>Practice portion control using hand measurements.</li>
+                            <li>Eat every 3–4 hours to maintain metabolism.</li>
+                            <li>Include a mix of carbs, protein, and healthy fats in each meal.</li>
+                            <li>Limit sugary beverages and snacks.</li>
+                        </ul>
+                    </li>
+                        </ul>`;
+                break;
+            case "3-3-2-3-1-3-3-3-3":
+                dietPlan = `
+                    <ul>
+                    <li><strong>Breakfast (7:00–9:00 AM):</strong> Whole-grain pancakes topped with Greek yogurt and strawberries – balanced carbs and protein (350 kcal).</li>
+                    <li><strong>Mid-Morning Snack (10:30 AM):</strong> Orange slices with a handful of sunflower seeds – vitamin C and healthy fats (200 kcal).</li>
+                    <li><strong>Lunch (12:30–1:30 PM):</strong> Baked tofu with couscous and roasted vegetables – plant-based protein and fiber (450 kcal).</li>
+                    <li><strong>Afternoon Snack (3:30 PM):</strong> Hard-boiled eggs with cherry tomatoes – protein and antioxidants (200 kcal).</li>
+                    <li><strong>Dinner (6:30–7:30 PM):</strong> Grilled lean beef, mashed cauliflower, and steamed green beans – iron-rich and low-carb (450 kcal).</li>
+                    <li><strong>Optional Evening Snack (9:00 PM):</strong> Rice cake with almond butter – light and nutritious (150 kcal).</li>
+                    <li><strong>Tips:</strong>
+                        <ul>
+                            <li>Drink 8–10 cups of water daily.</li>
+                            <li>Use the plate method: half veggies, a quarter protein, a quarter carbs.</li>
+                            <li>Eat mindfully—avoid screens while eating.</li>
+                            <li>Reduce sodium by cooking fresh whenever possible.</li>
+                            <li>Keep healthy snacks visible and ready.</li>
+                        </ul>
+                    </li>
+                        </ul>`;
+                break;
+            case "4-1-3-5-1-1-1-1-1":
+                dietPlan = `
+         <ul>
+                    <li><strong>Breakfast (7:00–9:00 AM):</strong> Smoothie bowl with banana, spinach, chia seeds, and granola – energizing and nutrient-dense (350 kcal).</li>
+                    <li><strong>Mid-Morning Snack (10:30 AM):</strong> Pear with a tablespoon of peanut butter – fiber and protein (200 kcal).</li>
+                    <li><strong>Lunch (12:30–1:30 PM):</strong> Grilled chicken salad with avocado, cherry tomatoes, and vinaigrette – lean protein and healthy fats (450 kcal).</li>
+                    <li><strong>Afternoon Snack (3:30 PM):</strong> A small handful of mixed nuts with dried cranberries – satisfying and antioxidant-rich (200 kcal).</li>
+                    <li><strong>Dinner (6:30–7:30 PM):</strong> Baked cod, wild rice, and steamed asparagus – light and rich in nutrients (450 kcal).</li>
+                    <li><strong>Optional Evening Snack (9:00 PM):</strong> Low-fat cheese stick with whole grain crackers – small and protein-packed (150 kcal).</li>
+                    <li><strong>Tips:</strong>
+                        <ul>
+                            <li>Drink 8–10 cups of water daily.</li>
+                            <li>Focus on colorful meals – more colors mean more nutrients.</li>
+                            <li>Balance your macros in every meal (carbs, fats, protein).</li>
+                            <li>Limit sugary snacks, replace with fruits.</li>
+                            <li>Prepare meals ahead to avoid last-minute unhealthy choices.</li>
+                        </ul>
+                    </li>
+                        </ul>`;
+                break;
+            case "1-2-1-1-2-2-2-2-2":
+                dietPlan = `
+            <ul>
+                    <li><strong>Breakfast (7:00–9:00 AM):</strong> Avocado toast on multigrain bread with a boiled egg – healthy fats and protein (350 kcal).</li>
+                    <li><strong>Mid-Morning Snack (10:30 AM):</strong> Handful of trail mix (nuts, seeds, and raisins) – energy-boosting and nutrient-rich (200 kcal).</li>
+                    <li><strong>Lunch (12:30–1:30 PM):</strong> Grilled tuna sandwich with lettuce and tomato on whole-wheat bread – protein and fiber (450 kcal).</li>
+                    <li><strong>Afternoon Snack (3:30 PM):</strong> Sliced cucumber and hummus – light and refreshing (200 kcal).</li>
+                    <li><strong>Dinner (6:30–7:30 PM):</strong> Chicken stir-fry with mixed vegetables and soba noodles – filling and full of flavor (450 kcal).</li>
+                    <li><strong>Optional Evening Snack (9:00 PM):</strong> Low-fat milk with a small oatmeal cookie – comfort with control (150 kcal).</li>
+                    <li><strong>Tips:</strong>
+                        <ul>
+                            <li>Drink 8–10 cups of water daily.</li>
+                            <li>Chew slowly and savor your meals to improve digestion.</li>
+                            <li>Choose whole grains over refined ones.</li>
+                            <li>Limit red meat to 1–2 times per week.</li>
+                            <li>Incorporate herbs and spices for flavor instead of salt.</li>
+                        </ul>
+                    </li>
+                        </ul>`;
+                break;
+            case "2-3-2-3-1-1-1-1-1":
+                dietPlan = `
+                    <ul>
+                    <li><strong>Breakfast (7:00–9:00 AM):</strong> Quinoa porridge with chopped nuts and raisins – packed with plant protein and fiber (350 kcal).</li>
+                    <li><strong>Mid-Morning Snack (10:30 AM):</strong> Kiwi and a handful of roasted chickpeas – vitamin C and protein (200 kcal).</li>
+                    <li><strong>Lunch (12:30–1:30 PM):</strong> Baked turkey meatballs with whole-grain pasta and marinara sauce – balanced and satisfying (450 kcal).</li>
+                    <li><strong>Afternoon Snack (3:30 PM):</strong> Sliced apple with cottage cheese – sweet and protein-rich (200 kcal).</li>
+                    <li><strong>Dinner (6:30–7:30 PM):</strong> Vegetable curry with tofu and basmati rice – flavorful and full of nutrients (450 kcal).</li>
+                    <li><strong>Optional Evening Snack (9:00 PM):</strong> Banana with a teaspoon of dark chocolate chips – naturally sweet and indulgent (150 kcal).</li>
+                    <li><strong>Tips:</strong>
+                        <ul>
+                            <li>Drink 8–10 cups of water daily.</li>
+                            <li>Stick to regular meal timings to support metabolism.</li>
+                            <li>Use healthy cooking methods like baking, steaming, and grilling.</li>
+                            <li>Snack smart by combining protein with fiber.</li>
+                            <li>Include at least 3 servings of vegetables daily.</li>
+                        </ul>
+                    </li>
+                        </ul>`;
+                break;
+            case "3-1-3-6-2-3-3-3-3":
+                dietPlan = `
+                    <ul>
+                    <li><strong>Breakfast (7:00–9:00 AM):</strong> Scrambled eggs with spinach and whole-grain toast – high in protein and iron (350 kcal).</li>
+                    <li><strong>Mid-Morning Snack (10:30 AM):</strong> Handful of grapes with low-fat string cheese – sweet and balanced (200 kcal).</li>
+                    <li><strong>Lunch (12:30–1:30 PM):</strong> Grilled vegetable wrap with hummus and a side of mixed greens – fiber-rich and filling (450 kcal).</li>
+                    <li><strong>Afternoon Snack (3:30 PM):</strong> Smoothie with mango, Greek yogurt, and flax seeds – refreshing and nutritious (200 kcal).</li>
+                    <li><strong>Dinner (6:30–7:30 PM):</strong> Stir-fried tofu with bell peppers, carrots, and brown rice – plant-based and protein-packed (450 kcal).</li>
+                    <li><strong>Optional Evening Snack (9:00 PM):</strong> Baked apple slices with cinnamon – naturally sweet and comforting (150 kcal).</li>
+                    <li><strong>Tips:</strong>
+                        <ul>
+                            <li>Drink 8–10 cups of water daily.</li>
+                            <li>Stick to whole, unprocessed foods whenever possible.</li>
+                            <li>Avoid eating heavy meals right before bed.</li>
+                            <li>Incorporate seasonal fruits and vegetables.</li>
+                            <li>Use healthy oils like olive or coconut oil for cooking.</li>
+                        </ul>
+                    </li>
+                        </ul>`;
+                break;
+            case "4-2-1-1-1-1-1-1-1":
+                dietPlan = `
+                <ul>
+                    <li><strong>Breakfast (7:00–9:00 AM):</strong> Chia pudding with almond milk, sliced banana, and walnuts – omega-3s and fiber-rich (350 kcal).</li>
+                    <li><strong>Mid-Morning Snack (10:30 AM):</strong> Carrot sticks with a small portion of hummus – crunchy and nutritious (200 kcal).</li>
+                    <li><strong>Lunch (12:30–1:30 PM):</strong> Lentil soup with a whole grain roll and side salad – hearty and full of protein (450 kcal).</li>
+                    <li><strong>Afternoon Snack (3:30 PM):</strong> Protein bar or homemade energy bites – on-the-go fuel (200 kcal).</li>
+                    <li><strong>Dinner (6:30–7:30 PM):</strong> Grilled shrimp with couscous and sautéed zucchini – light and rich in protein (450 kcal).</li>
+                    <li><strong>Optional Evening Snack (9:00 PM):</strong> Warm skim milk with a dash of cinnamon – calming and satisfying (150 kcal).</li>
+                    <li><strong>Tips:</strong>
+                        <ul>
+                            <li>Drink 8–10 cups of water daily.</li>
+                            <li>Prioritize sleep and eat your last meal at least 2 hours before bed.</li>
+                            <li>Switch up your protein sources – fish, legumes, poultry, tofu.</li>
+                            <li>Keep a food journal to track your eating habits.</li>
+                            <li>Control sugar cravings by adding natural sweeteners like dates.</li>
+                        </ul>
+                    </li>
+                </ul>
+                        `;
+                break;
+            case "1-3-2-3-2-3-3-3-3":
+                dietPlan = `
+                    <ul>
+                    <li><strong>Breakfast (7:00–9:00 AM):</strong> Whole grain pancakes with fresh strawberries and a drizzle of honey – energizing and fiber-rich (350 kcal).</li>
+                    <li><strong>Mid-Morning Snack (10:30 AM):</strong> Boiled egg and orange slices – protein and vitamin C combo (200 kcal).</li>
+                    <li><strong>Lunch (12:30–1:30 PM):</strong> Chickpea salad with cucumber, tomato, parsley, and lemon vinaigrette – light and packed with fiber (450 kcal).</li>
+                    <li><strong>Afternoon Snack (3:30 PM):</strong> Cottage cheese with pineapple chunks – refreshing and protein-filled (200 kcal).</li>
+                    <li><strong>Dinner (6:30–7:30 PM):</strong> Grilled beef strips with mashed cauliflower and roasted Brussels sprouts – satisfying and low-carb (450 kcal).</li>
+                    <li><strong>Optional Evening Snack (9:00 PM):</strong> Rice cake with almond butter – light and satisfying (150 kcal).</li>
+                    <li><strong>Tips:</strong>
+                        <ul>
+                            <li>Drink 8–10 cups of water daily.</li>
+                            <li>Start your day with warm lemon water for digestion.</li>
+                            <li>Rotate your meals to prevent boredom and ensure variety.</li>
+                            <li>Control snacking by preparing healthy options in advance.</li>
+                            <li>Include fermented foods (like yogurt or kimchi) for gut health.</li>
+                        </ul>
+                    </li>
+                        </ul> `;
+
+                break;
+            case "2-1-3-5-1-1-1-1-1":
+                dietPlan = `
+                    <ul>
+                    <li><strong>Breakfast (7:00–9:00 AM):</strong> Spinach and mushroom omelet with whole-grain toast – protein and greens (350 kcal).</li>
+                    <li><strong>Mid-Morning Snack (10:30 AM):</strong> Sliced apple with almond butter – fiber and healthy fats (200 kcal).</li>
+                    <li><strong>Lunch (12:30–1:30 PM):</strong> Grilled salmon salad with mixed greens, avocado, and balsamic dressing – rich in omega-3 and nutrients (450 kcal).</li>
+                    <li><strong>Afternoon Snack (3:30 PM):</strong> Greek yogurt with honey and chia seeds – protein-packed and satisfying (200 kcal).</li>
+                    <li><strong>Dinner (6:30–7:30 PM):</strong> Roasted chicken with sweet potato and steamed broccoli – balanced and nutrient-dense (450 kcal).</li>
+                    <li><strong>Optional Evening Snack (9:00 PM):</strong> A small square of dark chocolate with a handful of nuts – light and indulgent (150 kcal).</li>
+                    <li><strong>Tips:</strong>
+                        <ul>
+                            <li>Drink 8–10 cups of water daily.</li>
+                            <li>Plan meals ahead to reduce last-minute unhealthy choices.</li>
+                            <li>Focus on whole, nutrient-dense foods for sustained energy.</li>
+                            <li>Track your hunger levels to avoid overeating.</li>
+                            <li>Include healthy fats (like avocado and nuts) in every meal.</li>
+                        </ul>
+                    </li>
+                        </ul>`;
+
+                break;
+            default:
+                dietPlan = `
+                <ul>
+                  <li><strong>Breakfast (7:00–9:00 AM):</strong> Oatmeal with almond butter and banana – provides energy and satiety (350 kcal).</li>
+                  <li><strong>Mid-Morning Snack (10:30 AM):</strong> Apple with almonds – fiber and healthy fats (200 kcal).</li>
+                  <li><strong>Lunch (12:30–1:30 PM):</strong> Grilled chicken, steamed broccoli, and quinoa with olive oil – muscle repair and energy (450 kcal).</li>
+                  <li><strong>Afternoon Snack (3:30 PM):</strong> Low-fat Greek yogurt with berries – protein and antioxidants (200 kcal).</li>
+                  <li><strong>Dinner (6:30–7:30 PM):</strong> Baked salmon, sweet potato, and sautéed spinach – omega-3 and nutrients (450 kcal).</li>
+                  <li><strong>Optional Evening Snack (9:00 PM):</strong> Whole-grain toast with peanut butter – small balanced option (150 kcal).</li>
+                  <li><strong>Tips:</strong>
+                    <ul>
+                      <li>Drink 8–10 cups of water daily.</li>
+                      <li>Practice portion control using hand measurements.</li>
+                      <li>Eat every 3–4 hours to avoid overeating.</li>
+                      <li>Limit processed foods.</li>
+                      <li>Allow 1–2 indulgences per week.</li>
+                    </ul>
+                  </li>
+                        </ul>`;
+                break;
+        }
+        
+        var exercisePlan = "";
+        // New switch statement for exercise plan based on same key
+        switch (key) {
+            case "1-1-1-1-1-1-1-1-1":
+                exercisePlan = `
+                    <ul>
+                    <li><strong>Workout Frequency:</strong> 5 days a week, 45–60 minutes per session.</li>
+                    <li><strong>Day 2 (Cardio):</strong> High-intensity interval training (HIIT) with sprints, burpees, and mountain climbers.</li>
+                    <li><strong>Warm-up:</strong> Dynamic stretches (leg swings, arm circles) for 5 minutes.</li>
+                    <li><strong>Sample Exercises:</strong>
+                        <ul>
+                            <li>Sprints: 10 x 30-second sprints with 1-minute rest between sets</li>
+                            <li>Burpees: 3 sets of 15 reps</li>
+                            <li>Mountain climbers: 3 sets of 30 seconds</li>
+                            <li>Jumping jacks: 3 sets of 30 seconds</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cool-down:</strong> Slow-paced walking and stretching for 5 minutes.</li>
+                    <li><strong>Goal:</strong> Improve cardiovascular fitness, burn fat, and increase endurance.</li>
+                </ul>
+                        `;
+                
+
+                break;
+            case "2-2-1-2-1-2-2-2-2":
+                exercisePlan = `
+                    <ul>
+                    <li><strong>Workout Frequency:</strong> 5 days a week, 45–60 minutes per session.</li>
+                    <li><strong>Day 3 (Core & Abs):</strong> Targeting core strength with exercises like leg raises, bicycle crunches, and Russian twists.</li>
+                    <li><strong>Warm-up:</strong> Light jogging or dynamic stretches (leg swings, torso twists) for 5 minutes.</li>
+                    <li><strong>Sample Exercises:</strong>
+                        <ul>
+                            <li>Leg raises: 3 sets of 15 reps</li>
+                            <li>Bicycle crunches: 3 sets of 20 reps (10 per side)</li>
+                            <li>Russian twists: 3 sets of 30 seconds</li>
+                            <li>Planks with knee taps: 3 sets, 30–45 seconds hold</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cool-down:</strong> Stretching abs and lower back for 5 minutes.</li>
+                    <li><strong>Goal:</strong> Strengthen core muscles, improve stability and posture.</li>
+                        </ul>`;
+                break;
+            case "3-3-2-3-1-3-3-3-3":
+                exercisePlan = `
+                    <ul>
+                    <li><strong>Workout Frequency:</strong> 5 days a week, 45–60 minutes per session.</li>
+                    <li><strong>Day 4 (Lower Body):</strong> Lower body workout focusing on legs and glutes with exercises like lunges, deadlifts, and calf raises.</li>
+                    <li><strong>Warm-up:</strong> Dynamic leg stretches (leg swings, hip circles) and light jogging for 5 minutes.</li>
+                    <li><strong>Sample Exercises:</strong>
+                        <ul>
+                            <li>Lunges: 3 sets of 12 reps per leg</li>
+                            <li>Deadlifts: 3 sets of 10 reps</li>
+                            <li>Calf raises: 3 sets of 15 reps</li>
+                            <li>Glute bridges: 3 sets of 12 reps</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cool-down:</strong> Stretching hamstrings, quads, and calves for 5 minutes.</li>
+                    <li><strong>Goal:</strong> Build leg strength, tone glutes, and improve lower body endurance.</li>
+                        </ul>`;
+
+                
+
+                break;
+            case "4-1-3-5-1-1-1-1-1":
+                exercisePlan = `
+                    <ul>
+                    <li><strong>Workout Frequency:</strong> 5 days a week, 45–60 minutes per session.</li>
+                    <li><strong>Day 5 (Upper Body):</strong> Upper body workout targeting arms, shoulders, and chest with exercises like push-ups, dumbbell presses, and shoulder raises.</li>
+                    <li><strong>Warm-up:</strong> Arm circles, shoulder stretches, and light cardio for 5 minutes.</li>
+                    <li><strong>Sample Exercises:</strong>
+                        <ul>
+                            <li>Push-ups: 3 sets of 12–15 reps</li>
+                            <li>Dumbbell bench press: 3 sets of 12 reps</li>
+                            <li>Shoulder presses: 3 sets of 12 reps</li>
+                            <li>Tricep dips: 3 sets of 10–12 reps</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cool-down:</strong> Stretching shoulders, chest, and arms for 5 minutes.</li>
+                    <li><strong>Goal:</strong> Build upper body strength, tone arms and shoulders, improve endurance.</li>
+                        </ul>`;
+
+
+                break;
+            case "1-2-1-1-2-2-2-2-2":
+                exercisePlan = `
+                    <ul>
+                    <li><strong>Workout Frequency:</strong> 5 days a week, 45–60 minutes per session.</li>
+                    <li><strong>Day 6 (Full Body Circuit):</strong> A full-body workout focusing on total-body strength and endurance with compound exercises.</li>
+                    <li><strong>Warm-up:</strong> Jumping jacks, arm swings, and leg swings for 5 minutes.</li>
+                    <li><strong>Sample Exercises:</strong>
+                        <ul>
+                            <li>Jump squats: 3 sets of 15 reps</li>
+                            <li>Push-ups: 3 sets of 12–15 reps</li>
+                            <li>Deadlifts: 3 sets of 12 reps</li>
+                            <li>Bent-over rows: 3 sets of 12 reps</li>
+                            <li>Mountain climbers: 3 sets of 30 seconds</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cool-down:</strong> Stretching full body (arms, legs, and back) for 5 minutes.</li>
+                    <li><strong>Goal:</strong> Improve overall strength, endurance, and muscular balance.</li>
+                        </ul>`;
+
+                
+
+                break;
+            case "2-3-2-3-1-1-1-1-1":
+                exercisePlan = `
+                    <ul>
+                    <li><strong>Workout Frequency:</strong> 5 days a week, 45–60 minutes per session.</li>
+                    <li><strong>Day 7 (Active Recovery):</strong> Focus on low-impact exercises for recovery, including stretching, yoga, and light cardio.</li>
+                    <li><strong>Warm-up:</strong> Gentle walking or cycling for 5 minutes.</li>
+                    <li><strong>Sample Exercises:</strong>
+                        <ul>
+                            <li>Sun Salutations (Yoga): 3 sets of 5 cycles</li>
+                            <li>Cat-Cow Stretch (Yoga): 3 sets of 10 reps</li>
+                            <li>Child's Pose (Yoga): Hold for 30–60 seconds</li>
+                            <li>Gentle walking: 20–30 minutes at a moderate pace</li>
+                            <li>Hip stretches (seated or standing): 3 sets of 30 seconds each side</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cool-down:</strong> Deep stretching and deep breathing exercises for relaxation.</li>
+                    <li><strong>Goal:</strong> Promote recovery, flexibility, and relaxation, reduce muscle soreness.</li>
+                </ul>
+                        `;
+                
+
+                break;
+            case "3-1-3-6-2-3-3-3-3":
+                exercisePlan = `
+                    <ul>
+                    <li><strong>Workout Frequency:</strong> 5 days a week, 45–60 minutes per session.</li>
+                    <li><strong>Day 8 (Bodyweight Circuit):</strong> A circuit of bodyweight exercises designed to improve strength, endurance, and stability.</li>
+                    <li><strong>Warm-up:</strong> Jump rope or light jogging for 5 minutes.</li>
+                    <li><strong>Sample Exercises:</strong>
+                        <ul>
+                            <li>Squat jumps: 3 sets of 15 reps</li>
+                            <li>Push-ups: 3 sets of 12–15 reps</li>
+                            <li>Walking lunges: 3 sets of 12 reps per leg</li>
+                            <li>Plank to push-up: 3 sets of 10 reps</li>
+                            <li>Mountain climbers: 3 sets of 30 seconds</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cool-down:</strong> Stretching major muscle groups (legs, arms, back) for 5 minutes.</li>
+                    <li><strong>Goal:</strong> Build overall strength, endurance, and coordination using just bodyweight exercises.</li>
+                </ul>
+                        `;
+                
+
+                break;
+            case "4-2-1-1-1-1-1-1-1":
+                exercisePlan = `
+                    <ul>
+                    <li><strong>Workout Frequency:</strong> 5 days a week, 45–60 minutes per session.</li>
+                    <li><strong>Day 9 (Mobility & Flexibility):</strong> Focus on improving flexibility and joint mobility with yoga and dynamic stretches.</li>
+                    <li><strong>Warm-up:</strong> Light cardio (jogging, cycling) for 5 minutes.</li>
+                    <li><strong>Sample Exercises:</strong>
+                        <ul>
+                            <li>Cat-Cow Stretch (Yoga): 3 sets of 10 reps</li>
+                            <li>Downward Dog to Cobra (Yoga): 3 sets of 5 reps</li>
+                            <li>Lunging hip flexor stretch: 3 sets of 30 seconds per side</li>
+                            <li>Seated forward fold stretch: Hold for 30 seconds</li>
+                            <li>Standing hamstring stretch: Hold for 30 seconds per leg</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cool-down:</strong> Deep stretching with a focus on hamstrings, quads, and shoulders for 5 minutes.</li>
+                    <li><strong>Goal:</strong> Improve flexibility, increase range of motion, and promote muscle relaxation.</li>
+                </ul>
+                        `;
+                
+
+                break;
+            case "1-3-2-3-2-3-3-3-3":
+                exercisePlan = `
+                    <ul>
+                    <li><strong>Workout Frequency:</strong> 5 days a week, 45–60 minutes per session.</li>
+                    <li><strong>Day 10 (Plyometrics):</strong> Focus on explosive movements to build power and agility.</li>
+                    <li><strong>Warm-up:</strong> Dynamic stretches (leg swings, arm circles) and light cardio (jogging) for 5 minutes.</li>
+                    <li><strong>Sample Exercises:</strong>
+                        <ul>
+                            <li>Box jumps: 3 sets of 12 reps</li>
+                            <li>Burpees: 3 sets of 15 reps</li>
+                            <li>Broad jumps: 3 sets of 10 reps</li>
+                            <li>Lateral jumps: 3 sets of 15 reps per side</li>
+                            <li>Skater hops: 3 sets of 20 reps</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cool-down:</strong> Light jogging and stretching for 5 minutes.</li>
+                    <li><strong>Goal:</strong> Build explosive strength, increase agility, and enhance athletic performance.</li>
+                </ul>
+                        `;
+               
+
+                break;
+            case "2-1-3-5-1-1-1-1-1":
+                exercisePlan = `
+                    <ul>
+                    <li><strong>Workout Frequency:</strong> 5 days a week, 45–60 minutes per session.</li>
+                    <li><strong>Day 11 (Cardio & Endurance):</strong> Focus on building cardiovascular endurance and overall stamina.</li>
+                    <li><strong>Warm-up:</strong> 5 minutes of light jogging or brisk walking.</li>
+                    <li><strong>Sample Exercises:</strong>
+                        <ul>
+                            <li>Running intervals: 30 seconds sprint, 1 minute walk (repeat for 20 minutes)</li>
+                            <li>Jump rope: 3 sets of 1 minute</li>
+                            <li>High knees: 3 sets of 30 seconds</li>
+                            <li>Burpees: 3 sets of 15 reps</li>
+                            <li>Mountain climbers: 3 sets of 30 seconds</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cool-down:</strong> Light jogging or walking, followed by stretching for 5 minutes.</li>
+                    <li><strong>Goal:</strong> Improve cardiovascular fitness, increase stamina, and burn calories.</li>
+                </ul>
+                        `;
+
+                break;
+            default:
+                exercisePlan = `
+                <ul>
+                  <li><strong>Workout Frequency:</strong> 5 days a week, 45–60 minutes per session.</li>
+                  <li><strong>Day 1 (Strength):</strong> Full-body workout with squats, push-ups, rows, and planks.</li>
+                  <li><strong>Warm-up:</strong> Light jogging or jumping jacks for 5 minutes.</li>
+                  <li><strong>Sample Exercises:</strong>
+                    <ul>
+                      <li>Squats: 3 sets of 12 reps</li>
+                      <li>Push-ups: 3 sets of 10–15 reps</li>
+                      <li>Bent-over rows: 3 sets of 12 reps</li>
+                      <li>Planks: 3 sets, 30–60 seconds hold</li>
+                    </ul>
+                  </li>
+                  <li><strong>Cool-down:</strong> Stretching quads, chest, and back for 5 minutes.</li>
+                  <li><strong>Goal:</strong> Improve strength, endurance, and flexibility.</li>
+                </ul>`;
+
+                break;
+        }
+
+        document.getElementById("dietPlanText").innerHTML = dietPlan;
+        document.getElementById("exercisePlanText").innerHTML = exercisePlan;
+
+    </script>
+</body>
+</html>

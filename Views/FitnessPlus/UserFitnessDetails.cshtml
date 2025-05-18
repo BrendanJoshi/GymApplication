@@ -1,0 +1,19 @@
+﻿@model HealthLogViewModel
+
+<h2>Fitness Log Details</h2>
+
+<dl class="row">
+    <dt class="col-sm-2">Name</dt>
+    <dd class="col-sm-10">@Model.PersonalInformationName</dd>
+
+    <dt class="col-sm-2">Exercise</dt>
+    <dd class="col-sm-10">@Model.ExerciseName (@Model.DurationMinutes min, @Model.CaloriesBurned cal)</dd>
+
+    <dt class="col-sm-2">Meal</dt>
+    @* <dd class="col-sm-10">@Model.MealType - @Model.FoodItem (@Model.Quantity units, @Model.BMI cal)</dd>
+ *@
+    <dt class="col-sm-2">Body</dt>
+    <dd class="col-sm-10">Weight: @Model.WeightKg kg, Waist: @Model.WaistCm cm, Chest: @Model.ChestCm cm, BMI: @Model.BMI</dd>
+</dl>
+
+<a href="@Url.Action("FitnessLog")" class="btn btn-secondary">Back</a>
